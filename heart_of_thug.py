@@ -14,6 +14,8 @@ async def reborn_thug():
         msg = await ws.recv()
         json_msg = json.loads(msg)
 
+        print(json_msg)
+
         if json_msg['type'] == 'message':
             try:
                 thug.catch_message(
