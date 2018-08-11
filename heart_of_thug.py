@@ -21,8 +21,8 @@ async def reborn_thug():
                     json_msg['user'],
                     json_msg['text']
                 )
-            except:
-                print('error')
+            except Exception as e:
+                print(e)
 
 
 if __name__ == '__main__':

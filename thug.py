@@ -26,7 +26,7 @@ class Thug:
                 '어쩌라고', '노-잼'
             ]
             picked_msg = random.choice(option_msg)
-            this.slack.chat.post_message(
+            self.slack.chat.post_message(
                 ch,
                 '{msg} <@{user}>'.format(user=user, msg=picked_msg),
                 as_user=True
