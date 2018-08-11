@@ -2,37 +2,35 @@ import json
 import asyncio
 import websockets
 
-from conf import *
+import conf
 from thug import Thug
 
 
 async def reborn_thug():
-    ws = await websockets.connect(sock_endpoint)
     thug = Thug(conf.TOKEN, conf.TRIG)
+    ws = await websockets.connect(thug.endpoint)
 
     while True:
         msg = await ws.recv()
         json_msg = json.loads(msg)
 
-        print(json_msg)
-
         if json_msg['type'] == 'message':
             try:
                 thug.catch_message(
                     json_msg['channel'],
-                    json_msg['text'],
-                    json_msg['user']
+                    json_msg['user'],
+                    json_msg['text']
                 )
-             except:
+            except:
                 print('error')
 
 
 if __name__ == '__main__':
-    slack = Slacker(TOKEN)
-    resposne = slack.rtm.start()
-    endpoint = response.body['url']
-
+    print('hello')
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    asyncio.get_event_loop().run_until_complete(reborn_thug())
-    asyncio.get_event_loop().run_forever()
+    try:
+        asyncio.get_event_loop().run_until_complete(reborn_thug())
+        asyncio.get_event_loop().run_forever()
+    except KeyboardInterrupt:
+        print('goodbye')
