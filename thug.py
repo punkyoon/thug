@@ -41,7 +41,7 @@ class Thug:
             return
 
 
-        if self.thug_name == msg[0]:
+        if '<@{}>'.format(self.thug_name) == msg[0]:
             option_msg = [
                 '왜', '왜 ㅡㅡ', '왜불러', '어쩔', '데헷 >_<',
                 '뿌직!', '뿌우웅=3', '반사', '무지개반사', '뭠마'
